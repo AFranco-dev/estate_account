@@ -4,7 +4,7 @@
     'version': '1.0.0',
     'category': 'Real Estate',
     'sequence': -999,
-    'summary': 'A module for managing your real estate properties',
+    'summary': 'A module for managing your real estate properties invoices',
     'description': "This is the odoo 16 tutorial module",
     'depends': [
         'base',
@@ -13,6 +13,7 @@
         'real-estate',
     ],
     'data': [
+        'security/ir.model.access.csv',
     ],
     'demo': [],
     'application': True,
