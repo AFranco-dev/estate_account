@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, exceptions
+from odoo.addons.account.models import account_move
 
 class EstateProperty(models.Model):
     _inherit = 'estate.property'
@@ -8,7 +9,7 @@ class EstateProperty(models.Model):
         # defining invoice fields
         partner_id = self.buyer_id.id
         move_type = 'out_invoice'
-        print(self.env['account.move'].name)
+        print(account_move.with_context(move_type='out_invoice').move_type)
         journal_id = self.env['account.move'].with_context(move_type='out_invoice')._search_default_journal().id
 
         # creating invoice dictionary
