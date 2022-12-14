@@ -9,10 +9,8 @@ class EstateProperty(models.Model):
         # defining invoice fields
         partner_id = self.buyer_id.id
         move_type = 'out_invoice'
-        sale_account_move = account_move
-        sale_account_move.move_type = 'out_invoice'
-        print(sale_account_move.move_type)
-        journal_id = sale_account_move._search_default_journal().id
+        print(self.env['account.move'].sudo().with_context(move_type='out_invoice').move_type)
+        journal_id = self.env['account.move'].sudo().with_context(move_type='out_invoice').move_type.id
 
         # creating invoice dictionary
         invoice = {
