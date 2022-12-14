@@ -7,5 +7,5 @@ class EstateProperty(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'estate.property']
 
     def property_sold(self):
-        print("Overriden property sold.")
+        print("Overriden property sold. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         return super().property_sold()
