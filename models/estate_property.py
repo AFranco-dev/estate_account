@@ -22,12 +22,12 @@ class EstateProperty(models.Model):
             invoice_vals_list.append(invoice_vals)
         
         if not invoice_vals_list:
-            raise self._nothing_to_invoice_error()
+            raise exceptions.UserError("No invoices to issue.")
 
         moves = self.env['account.move'].sudo().with_context(default_move_type='out_invoice').create(invoice_vals_list)
 
         return moves
 
     def property_sold(self):
-
+        self._create_invoices()
         return super().property_sold()
