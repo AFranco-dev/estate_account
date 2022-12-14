@@ -15,16 +15,12 @@ class EstateProperty(models.Model):
         return invoice_vals
     
     def _create_invoices(self, grouped=False, final=True, date=None):
-        invoice_vals_list = []
-
-        for order in self:
-            invoice_vals = self._prepare_invoice_dict
-            invoice_vals_list.append(invoice_vals)
+        invoice = self._prepare_invoice_dict
         
-        if not invoice_vals_list:
+        if not invoice:
             raise exceptions.UserError("No invoices to issue.")
 
-        moves = self.env['account.move'].sudo().with_context(default_move_type='out_invoice').create(invoice_vals_list)
+        moves = self.env['account.move'].sudo().with_context(default_move_type='out_invoice').create(invoice)
 
         return moves
 
