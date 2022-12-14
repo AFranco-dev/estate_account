@@ -12,7 +12,7 @@ class EstateProperty(models.Model):
         sale_account_move = account_move
         sale_account_move.move_type = 'out_invoice'
         print(sale_account_move.move_type)
-        journal_id = self.env['account.move'].with_context(move_type='out_invoice')._search_default_journal().id
+        journal_id = sale_account_move._search_default_journal().id
 
         # creating invoice dictionary
         invoice = {
